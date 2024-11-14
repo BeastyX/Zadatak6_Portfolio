@@ -1,0 +1,658 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Varela+Round&display=swap');
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Varela Round", sans-serif;
+    color: white;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+body
+{
+    background-color: #0d1520;
+}
+
+/* H E A D E R */
+
+header
+{
+    background-color: #181c24;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 0px 64px 64px;
+    box-shadow: 0 4px 2px -2px #59e1a4;
+    transition: 2s;
+}
+
+header:hover
+{
+    box-shadow: 0 8px 8px -2px #59e1a4;
+}
+
+#header-container
+{
+    /* border: 1px solid red; */
+    padding: 16px;
+    display: flex;
+    column-gap: 48px;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-container a
+{
+    color: #59e1a4;
+}
+
+#header-container img
+{
+    width: 80px;
+    padding: 15px;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+#header-container img:hover
+{
+    box-shadow: -10px 0px 10px 1px #59e1a4;
+}
+
+#header-container ul
+{
+    list-style-type: none;
+    display: flex;
+    column-gap: 64px;
+}
+
+#header-container ul li
+{
+    position: relative;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#header-container li:hover
+{
+    color: white;
+}
+
+/* H E A D E R - UnderLine */
+
+#header-container li::after /* Sluzi za umetanje sadrzaja, pre elementa, moglo je i after */
+{
+    content: ''; /* Obavezno, bez ovoga ni ne vidimo liniju */
+    position: absolute;
+    bottom: -4px; /* linija pada ispod teksta */
+    left: 0; /* Ovim smo odredili odakle krece linija */
+    width: 0%;
+    height: 3px;
+    background-color: #59e1a4;
+    transition: 0.5s;
+}
+
+#header-container li:hover::after
+{
+    width: 100%;   
+}
+
+/* A B O U T */
+
+#about
+{
+    margin-top: 80px;
+
+    display: flex;
+    justify-content: center;
+
+    /* border: 1px solid red; */
+}
+
+#about-container
+{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 24px;
+    /* border: 1px solid red; */
+}
+
+.about-left
+{
+    width: 1000px;
+    /* border: 1px solid red; */
+}
+
+.about-left h1
+{
+    padding-left: 32px;
+    border-radius: 80px;
+    
+    font-size: 80px;
+    transition: 1s;
+
+    opacity: 0;
+    animation: fade-in 2s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards; /* Sluzi da element zadrzi zadnju vrednost animacije, oapcity: 1 */
+}
+
+.about-left p
+{
+    border-radius: 30px;
+    margin-top: 42px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 22px;
+    transition: 1s;
+
+    opacity: 0;
+    animation: fade-in 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+h1 span
+{
+    color: #59e1a4;
+    font-size: 100px;
+}
+
+.about-me
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image-container
+{
+    position: relative;
+    width: 480px;
+    height: 480px;
+    border-radius: 20px;
+
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-conic-gradient */
+    background: repeating-conic-gradient(from var(--a), #59e1a4 0%, #59e1a4 5%, transparent 5%, transparent 40%, #59e1a4 50%);
+
+    opacity: 0;
+    animation: fade-in 2s, spin 4s linear infinite;
+    animation-fill-mode: forwards;
+    
+}
+
+/* 
+    spin: primenjuje animaciju koju sam napravio
+    4s: Jedna rotacija na svakih 4 sekunde.
+    linear: Brzina rotacije je konstantna.
+    infinite: Animacija se ponavlja beskonacno.
+ */
+
+/* from var(--a) - Pocetni ugao odakle krece animacja */
+
+
+.about-image-container::before
+{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    
+    background: repeating-conic-gradient(from var(--a), #073810 0%, #073810 5%, transparent 5%, transparent 40%, #073810 50%);
+    animation: spin 4s linear infinite;
+    animation-delay: -1s;
+}
+
+.about-image-container::after
+{
+    content: '';
+    position: absolute;
+    inset: 8px; /* distanca od parent elementa */
+    background-image: url('images/Ja.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+    border: 8px solid #0d1520;
+}
+
+.about-info
+{
+    margin-top: 24px;
+    text-align: center;
+}
+
+.about-info h2
+{
+    color: #59e1a4;
+    font-size: 24px;
+}
+
+.about-info p
+{
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.about-info-animation:nth-child(1)
+{
+    opacity: 0;
+    animation: fade-in 2s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+.about-info-animation:nth-child(2)
+{
+    opacity: 0;
+    animation: fade-in 2s;
+    animation-delay: 2.4s;
+    animation-fill-mode: forwards;
+}
+
+.about-info-animation:nth-child(3)
+{
+    opacity: 0;
+    animation: fade-in 2s;
+    animation-delay: 2.8s;
+    animation-fill-mode: forwards;
+}
+
+/* S K I L L S */
+
+#skills
+{
+    margin-top: 200px;
+    /* border: 1px solid red; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#skills-container
+{
+    width: 950px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+#skills-container h1
+{
+    font-size: 80px;
+    margin-bottom: 48px;
+}
+
+.hexagonArea
+{
+    display: flex;
+}
+
+.hexagonArea.second
+{
+    transform: translateY(-40px); /* Pomoren na gore */
+}
+
+.hexagonArea.third
+{
+    transform: translateY(-80px);
+}
+
+.hexagonArea.last
+{
+    transform: translateY(-120px); 
+}
+
+.hexagon
+{
+    user-select: none;
+
+    position: relative;
+    width: 200px;
+    height: 230px;
+    margin: 0 10px;
+    clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%); /* hexa shape */
+    background: #59e1a4;
+
+    text-transform: uppercase;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    transition: .5s;
+}
+
+.hexagon h3
+{
+    margin-top: 12px;
+    color: black;
+    font-size: 16px;
+}
+
+.hexagon:hover
+{
+    background-color: #44ac7e;
+    transform: scale(0.9);
+
+}
+
+.hexagon img
+{
+    width: 100px;
+}
+
+/* P R O J E C T S */
+
+#projects
+{
+    margin-top: 100px;
+    /* border: 1px solid red; */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#projects-container
+{
+    /* border: 1px solid red; */
+    width: 80%;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+#projects-container h1
+{
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 48px;
+}
+
+.project
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    column-gap: 32px;
+    padding: 0px 16px;
+
+    margin-bottom: 200px;
+}
+
+.project-desc
+{
+    /* border: 1px solid red; */
+    width: 700px;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.project-desc h2
+{
+    color: #59e1a4;
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.project-desc h3
+{
+    font-size: 24px;
+    margin: 24px 0px 8px 0px;
+}
+
+.project-desc p
+{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+}
+
+.project-desc ul
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    font-size: 18px;
+}
+
+.project-desc li
+{
+    list-style: '✘';
+    padding-left: 16px;
+}
+
+li::marker
+{
+    color: #59e1a4;
+}
+
+.project-desc-span
+{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.project-btn
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.project-desc button
+{
+    background-color: #59e1a4;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px;
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 5px 4px 8px -2px #59e1a4;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.project-desc button a
+{
+    color: black;
+}
+
+.project-desc button:hover
+{
+    background-color: #44ac7e;
+}
+
+.project-images
+{
+    /* border: 1px solid red; */
+
+    position: relative;
+    width: 100%;    
+    height: 400px;
+    border-radius: 24px;
+    padding: 16px;
+
+    background: repeating-conic-gradient(from var(--a), #0d1520 0%, #0d1520 5%, transparent 5%, transparent 40%, #0d1520 50%);
+
+    opacity: 0;
+    animation: fade-in 2s, spin 12s linear infinite;
+    animation-fill-mode: forwards;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 16px;
+    row-gap: 16px;
+
+    background-color: #121d2b;
+
+    border-top: 2px solid #18263b;
+    border-bottom: 2px solid #18263b;
+
+    overflow-y: auto;
+}
+
+.project-images img
+{
+    border-radius: 10px;
+    width: 45%;
+    object-fit: cover;
+    transition: 1s;
+}
+
+.project-images img:hover
+{
+    box-shadow: 4px 8px 16px #59e1a4;
+}
+
+#education
+{
+    margin-top: 100px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 100px;
+}
+
+#education-container
+{
+    /* border: 1px solid red; */
+    width: 80%;
+
+}
+
+#education-container h1
+{
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 64px;
+}
+
+.education-all
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.education-content
+{
+    padding: 8px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+
+    animation: container-glow 2s infinite alternate; /* Add glow animation */
+    transition: box-shadow 0.3s ease;
+}
+
+.education-content h2
+{
+    color: #59e1a4;
+    font-size: 32px;
+    margin-top: 16px;
+}
+
+.education-content p
+{
+    font-size: 18px;
+}
+
+.education-content p:last-child
+{
+    margin-top: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* SCROLL */
+
+::-webkit-scrollbar 
+{
+    height: 22px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(132, 132, 132, 0.5);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+
+/* ANIMATIONS */
+
+/* @property definise --a kao css varijablu  */
+@property --a 
+{
+    syntax: '<angle>'; /* Ovo znaci da varijabla --a moze samo da primi parametre koji su u stepenima */
+    inherits: false; /* onemogucava automatsko nasledjivanje vrednosti */
+    initial-value: 0deg;
+}
+
+@keyframes spin
+{
+    0%
+    {
+        --a: 0deg;
+    }
+    100%
+    {
+        --a:360deg;
+    }
+}
+
+@keyframes fade-in
+{
+    from
+    {
+        opacity: 0;
+    }
+
+    to
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes container-glow {
+    0% {
+        box-shadow: 0 0 15px #59e1a4, #59e1a4;
+    }
+    100% {
+        box-shadow: 0 0 30px #59e1a4, 0 0 60px #59e1a4;
+    }
+}
